@@ -20,6 +20,17 @@ $('#btn-chat').click(function(){
 
 });
 
+$('#recommend').click(function(){
+    var sender = $('#name').val();
+    if(sender === "") {
+        showalert("Enter a user name ", "alert-danger");
+        return;
+    }
+    $.get("message/recommend/" + sender, function(data, status) {
+        showalert("Your best friend is " + data, "alert-info");
+    });
+});
+
 var lastMessageTime = null;
 var lastSender = null;
 setInterval(function(){
@@ -30,7 +41,6 @@ setInterval(function(){
 
         $.get("message/receiveRecent/" + sender, function(data, status) {
             var i = 0;
-            showalert("received recent " + data.length, "alert-info");
             while(i < data.length && lastMessageTime != null && compareTime(lastMessageTime, data[i].time))
                 i++;
             while(i < data.length) {
