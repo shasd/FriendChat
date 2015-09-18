@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by sukret on 8/11/15.
+ * Interface for message storage service
  */
 public interface MessageDao {
 

@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 /**
  * Created by sukret on 8/31/15.
+ * Stores messages in memory
  */
 public class MemoryMessageDaoImpl implements MessageDao {
 
@@ -29,7 +30,7 @@ public class MemoryMessageDaoImpl implements MessageDao {
     public synchronized List<Message> get(String sender, String receiver) {
         return messages.stream().filter(message ->
                         message.getSender().equals(sender) && message.getReceiver().equals(receiver))
-                .collect(Collectors.toList());
+                       .collect(Collectors.toList());
     }
 
     @Override
